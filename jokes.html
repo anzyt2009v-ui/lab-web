@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Iron Gym - Жарти</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h2>Iron Gym</h2>
+    <ul class="menu">
+        <li><a href="index.html">Головна</a></li>
+        <li><a href="schedule.html">Графік</a></li>
+        <li><a href="price.html">Ціни</a></li>
+        <li><a href="animation.html">Анімація JS</a></li>
+        <li><a href="game.html">Міні-гра JS</a></li>
+        <li><a href="survey.php">Опитування</a></li>
+        <li><a href="jokes.html">Жарти</a></li>
+        <li><a href="table.html">Таблиця</a></li>
+    </ul>
+    <hr>
+
+    <div class="main" style="width:auto">
+        <h1>Випадковий жарт</h1>
+        <p id="joke">Натисни кнопку</p>
+        <button onclick="loadJoke()">Показати жарт</button>
+    </div>
+
+    <script>
+        function loadJoke() {
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', 'jokes.txt');
+            xhr.onload = function () {
+                var jokes = xhr.responseText.split('\n');
+                var i = Math.floor(Math.random() * jokes.length);
+                document.getElementById('joke').innerText = jokes[i];
+            };
+            xhr.send();
+        }
+    </script>
+</body>
+</html>
